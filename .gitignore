@@ -1,3 +1,6 @@
+# Generic Java stuff
+target/
+
 # IntelliJ
 *.iml
 .idea
