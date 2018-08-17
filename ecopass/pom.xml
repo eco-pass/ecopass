@@ -11,14 +11,18 @@
         <relativePath>../ecopass-parent</relativePath>
     </parent>
 
-    <properties>
-        <!-- REQUIRED by appengine-maven-plugin plugin, if web.xml does not exist for your application -->
-        <failOnMissingWebXml>false</failOnMissingWebXml>
-    </properties>
-
     <groupId>info.ecopass</groupId>
     <artifactId>ecopass</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <!-- REQUIRED by appengine-maven-plugin plugin, if web.xml does not exist for your application -->
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
 
     <dependencies>
         <!-- Compile/runtime dependencies -->
@@ -88,7 +92,7 @@
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>appengine-maven-plugin</artifactId>
-                <version>1.3.2</version>
+                <version>1.3.1</version>
             </plugin>
             <!-- [END cloudplugin] -->
         </plugins>
