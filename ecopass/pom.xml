@@ -25,14 +25,13 @@
 
 
     <dependencies>
-        <!-- Compile/runtime dependencies -->
         <!-- App Engine SDK dependency : only required if you need to explicitly use App Engine API -->
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-1.0-sdk</artifactId>
             <version>1.9.64</version>
         </dependency>
-        <!-- [START servlet] -->
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -40,9 +39,7 @@
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
-        <!-- [END servlet] -->
 
-        <!-- [START_EXCLUDE] -->
         <!-- Test Dependencies -->
         <dependency>
             <groupId>com.google.appengine</groupId>
@@ -81,7 +78,7 @@
             <version>2.18.3</version>
             <scope>test</scope>
         </dependency>
-        <!-- [END_EXCLUDE] -->
+
     </dependencies>
 
     <build>

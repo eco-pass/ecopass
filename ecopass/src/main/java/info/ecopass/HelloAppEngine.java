@@ -34,5 +34,4 @@ public class HelloAppEngine extends HttpServlet {
         response.getWriter().println("Hello Sustainable Earth!");
     }
 
-
 }
