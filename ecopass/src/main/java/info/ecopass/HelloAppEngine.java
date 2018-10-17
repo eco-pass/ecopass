@@ -27,11 +27,13 @@ import java.io.IOException;
 @WebServlet(name = "HelloAppEngine", value = "/*")
 public class HelloAppEngine extends HttpServlet {
 
+    private LocationHistoryMeter locationHistoryMeter = new LocationHistoryMeter();
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/plain");
-        response.getWriter().println("Hello Sustainable Earth!");
+        response.getWriter().println("Hello " + locationHistoryMeter.getSustainable() + " Earth!");
     }
 
 }
