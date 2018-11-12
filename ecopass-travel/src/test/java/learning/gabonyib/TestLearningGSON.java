@@ -1,6 +1,9 @@
 package learning.gabonyib;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import info.ecopass.LocationVO;
+import info.ecopass.LocationsWrapper;
 import lombok.SneakyThrows;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -15,15 +18,32 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TestLearningGSON {
 
-    private static final String LOCATION_HISTORY_JSON = "Location History.json";
-    private Gson gson;
+    private static final String LOCATION_HISTORY_JSON = "ShortLocationHistory.json";
+    private Gson gson = new Gson();
 
+
+    @Test
+    public void testReadingShortJson() throws IOException, URISyntaxException {
+        System.out.println("testing json readings");
+        Stream jsonStream = streamResource(LOCATION_HISTORY_JSON);
+        StringBuilder sb = new StringBuilder();
+        jsonStream.forEach(line -> appendAsNewLine(sb, (String) line));
+        String jsonAsString = sb.toString();
+        LocationsWrapper locations = gson.fromJson(jsonAsString, new TypeToken<LocationsWrapper>() {}.getType());
+        locations.locations.stream().map(Object::toString).forEach(System.out::println);
+    }
+
+    private static void appendAsNewLine(StringBuilder sb, String line) {
+        sb.append(line);
+        sb.append("\n");
+    }
 
 
     private Stream<String> streamResource(String resourceFileName) throws IOException, URISyntaxException {
