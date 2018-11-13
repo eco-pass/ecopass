@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class LocationsWrapper {
 
-    public List<LocationVO> locations;
+    private List<LocationVO> locations;
 }

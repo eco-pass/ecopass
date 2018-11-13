@@ -25,7 +25,7 @@ import java.util.stream.Stream;
 
 public class TestLearningGSON {
 
-    private static final String LOCATION_HISTORY_JSON = "ShortLocationHistory.json";
+    private static final String LOCATION_HISTORY_JSON = "Location History.json";
     private Gson gson = new Gson();
 
 
@@ -37,7 +37,7 @@ public class TestLearningGSON {
         jsonStream.forEach(line -> appendAsNewLine(sb, (String) line));
         String jsonAsString = sb.toString();
         LocationsWrapper locations = gson.fromJson(jsonAsString, new TypeToken<LocationsWrapper>() {}.getType());
-        locations.locations.stream().map(Object::toString).forEach(System.out::println);
+        System.out.println(locations.getLocations().size());
     }
 
     private static void appendAsNewLine(StringBuilder sb, String line) {

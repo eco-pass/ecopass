@@ -12,16 +12,18 @@ public class LocationVO {
     private int accuracy;
     private int altitude;
     private int verticalAccuracy;
-    private List<InnerActivities> activities;
+    private List<InnerActivities> activity;
 
-    private class InnerActivities {
+    @Data
+    private static class InnerActivities {
         private long timestampMs;
-        List<DetectedActivityVO> detectedActivityVOS;
+        List<DetectedActivityVO> activity;
     }
 
+    @Data
     private static class DetectedActivityVO {
 
-        private Activity activity;
+        private Activity type;
         private int confidence;
 
         private enum Activity {
