@@ -2,25 +2,14 @@ package learning.gabonyib;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import info.ecopass.LocationVO;
-import info.ecopass.LocationsWrapper;
-import lombok.SneakyThrows;
-import org.junit.Assert;
-import org.junit.Ignore;
+import info.ecopass.locationhistory.LocationsWrapper;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TestLearningGSON {

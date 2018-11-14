@@ -1,5 +1,6 @@
-package info.ecopass;
+package info.ecopass.locationhistory;
 
+import info.ecopass.locationhistory.LocationVO;
 import lombok.Data;
 
 import java.util.List;

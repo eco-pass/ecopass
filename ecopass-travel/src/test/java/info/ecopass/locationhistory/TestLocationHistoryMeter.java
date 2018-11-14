@@ -1,4 +1,4 @@
-package info.ecopass;
+package info.ecopass.locationhistory;
 
 import org.junit.Assert;
 import org.junit.Test;

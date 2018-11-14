@@ -1,4 +1,4 @@
-package info.ecopass;
+package info.ecopass.locationhistory;
 
 public class LocationHistoryMeter{
 
