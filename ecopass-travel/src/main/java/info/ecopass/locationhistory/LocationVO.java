@@ -15,13 +15,13 @@ public class LocationVO {
     private List<InnerActivities> activity;
 
     @Data
-    private static class InnerActivities {
+    public static class InnerActivities {
         private long timestampMs;
-        List<DetectedActivityVO> activity;
+        private List<DetectedActivityVO> activity;
     }
 
     @Data
-    private static class DetectedActivityVO {
+    public static class DetectedActivityVO {
 
         private Activity type;
         private int confidence;
