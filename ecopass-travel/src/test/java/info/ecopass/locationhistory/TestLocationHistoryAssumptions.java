@@ -2,6 +2,9 @@ package info.ecopass.locationhistory;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import info.ecopass.locationhistory.model.LocationVO;
+import info.ecopass.locationhistory.model.LocationsWrapper;
 import lombok.SneakyThrows;
 import lombok.extern.java.Log;
 import org.junit.Assert;

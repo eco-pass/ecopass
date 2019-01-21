@@ -2,7 +2,9 @@ package learning.gabonyib;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import info.ecopass.locationhistory.LocationsWrapper;
+
+import info.ecopass.locationhistory.model.LocationsWrapper;
+
 import org.junit.Test;
 
 import java.io.IOException;

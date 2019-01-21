@@ -1,4 +1,4 @@
-package info.ecopass.locationhistory;
+package info.ecopass.locationhistory.model;
 
 import lombok.Data;
 
