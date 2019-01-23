@@ -1,5 +1,6 @@
 # Generic Java stuff
 target/
+**/bin/
 
 #Eclipse
 .settings/

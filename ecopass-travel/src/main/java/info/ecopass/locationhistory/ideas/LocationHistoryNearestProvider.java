@@ -1,4 +1,4 @@
-package info.ecopass.locationhistory;
+package info.ecopass.locationhistory.ideas;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,14 +6,14 @@ import java.util.List;
 
 import info.ecopass.locationhistory.model.LocationVO;
 
-public class LocationHistoryFunStuff {
+public class LocationHistoryNearestProvider {
 
-	public List<LocationVO> getNearbyActivities(String date, int activities) {
+	public List<LocationVO> getNearestActivities(String date, int activities) {
 		List<LocationVO> nearbyDates = new ArrayList<>();
 		return nearbyDates;
 	}
 
-	public List<LocationVO> getNearbyActivities(Date date) {
+	public List<LocationVO> getNearestActivities(Date date) {
 		validateDateNotFuture(date);
 		List<LocationVO> nearbyDates = new ArrayList<>();
 		return nearbyDates;
