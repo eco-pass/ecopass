@@ -23,7 +23,7 @@ public class TestLearningGSON {
     @Test
     public void testReadingShortJson() throws IOException, URISyntaxException {
         System.out.println("testing json readings");
-        Stream jsonStream = streamResource(LOCATION_HISTORY_JSON);
+        Stream<String> jsonStream = streamResource(LOCATION_HISTORY_JSON);
         StringBuilder sb = new StringBuilder();
         jsonStream.forEach(line -> appendAsNewLine(sb, (String) line));
         String jsonAsString = sb.toString();
