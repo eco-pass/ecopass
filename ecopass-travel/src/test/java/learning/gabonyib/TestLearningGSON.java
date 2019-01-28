@@ -2,21 +2,19 @@ package learning.gabonyib;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import info.ecopass.locationhistory.model.LocationsWrapper;
-
 import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.stream.Stream;
+
+import static info.ecopass.locationhistory.common.util.FileIO.streamResource;
+
 
 public class TestLearningGSON {
 
-    private static final String LOCATION_HISTORY_JSON = "Location History.json";
+    private static final String LOCATION_HISTORY_JSON = "5kLineLocationHistory.json";
     private Gson gson = new Gson();
 
 
@@ -27,7 +25,8 @@ public class TestLearningGSON {
         StringBuilder sb = new StringBuilder();
         jsonStream.forEach(line -> appendAsNewLine(sb, (String) line));
         String jsonAsString = sb.toString();
-        LocationsWrapper locations = gson.fromJson(jsonAsString, new TypeToken<LocationsWrapper>() {}.getType());
+        LocationsWrapper locations = gson.fromJson(jsonAsString, new TypeToken<LocationsWrapper>() {
+        }.getType());
         System.out.println(locations.getLocations().size());
     }
 
@@ -36,9 +35,4 @@ public class TestLearningGSON {
         sb.append("\n");
     }
 
-
-    private Stream<String> streamResource(String resourceFileName) throws IOException, URISyntaxException {
-        Path path = Paths.get(getClass().getClassLoader().getResource(resourceFileName).toURI());
-        return Files.lines(path);
-    }
 }

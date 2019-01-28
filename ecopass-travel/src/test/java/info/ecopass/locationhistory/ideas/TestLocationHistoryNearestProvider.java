@@ -17,8 +17,8 @@ public class TestLocationHistoryNearestProvider {
 	@Test
 	public void whenNoAmountSpecifiedAndDateIsAfterFirstEntry_thenReturnsPreviousAndNext() {
 		LocationHistoryNearestProvider locationHistoryFunStuff = new LocationHistoryNearestProvider();
-		long millisBetween = (ACTIVITY_BEFORE + ACTIVITY_AFTER) / 2;
-		Date dateBetween = new Date(millisBetween);
+		long timestampBetweenActivities = (ACTIVITY_BEFORE + ACTIVITY_AFTER) / 2;
+		Date dateBetween = new Date(timestampBetweenActivities);
 		List<LocationVO> result = locationHistoryFunStuff.getNearestActivities(dateBetween);
 		assertEquals(2, result.size());
 	}

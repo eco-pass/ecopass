@@ -1,11 +1,8 @@
 package info.ecopass.locationhistory;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import lombok.Data;
+import java.util.*;
 
-@Data
 public class LocationHistoryStatistics {
 
     /**
@@ -44,4 +41,54 @@ public class LocationHistoryStatistics {
         levelTwoEntries += amount;
     }
 
+    public long getTotalRootEntries() {
+        return totalRootEntries;
+    }
+
+    public void setTotalRootEntries(long totalRootEntries) {
+        this.totalRootEntries = totalRootEntries;
+    }
+
+    public long getLevelOneEntries() {
+        return levelOneEntries;
+    }
+
+    public void setLevelOneEntries(long levelOneEntries) {
+        this.levelOneEntries = levelOneEntries;
+    }
+
+    public List<Integer> getLevelOneActivityLengths() {
+        return levelOneActivityLengths;
+    }
+
+    public void setLevelOneActivityLengths(List<Integer> levelOneActivityLengths) {
+        this.levelOneActivityLengths = levelOneActivityLengths;
+    }
+
+    public long getLevelTwoEntries() {
+        return levelTwoEntries;
+    }
+
+    public void setLevelTwoEntries(long levelTwoEntries) {
+        this.levelTwoEntries = levelTwoEntries;
+    }
+
+    public List<Integer> getLevelTwoActivityLengths() {
+        return levelTwoActivityLengths;
+    }
+
+    public void setLevelTwoActivityLengths(List<Integer> levelTwoActivityLengths) {
+        this.levelTwoActivityLengths = levelTwoActivityLengths;
+    }
+
+    @Override
+    public String toString() {
+        return "LocationHistoryStatistics{" +
+                "totalRootEntries=" + totalRootEntries +
+                ", levelOneEntries=" + levelOneEntries +
+                ", levelOneActivityLengths=" + levelOneActivityLengths +
+                ", levelTwoEntries=" + levelTwoEntries +
+                ", levelTwoActivityLengths=" + levelTwoActivityLengths +
+                '}';
+    }
 }
