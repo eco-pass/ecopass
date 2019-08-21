@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import info.ecopass.locationhistory.model.LocationVO;
+import info.ecopass.locationhistory.model.Location;
 
 public class TestLocationHistoryNearestProvider {
 
@@ -19,7 +19,7 @@ public class TestLocationHistoryNearestProvider {
 		LocationHistoryNearestProvider locationHistoryFunStuff = new LocationHistoryNearestProvider();
 		long timestampBetweenActivities = (ACTIVITY_BEFORE + ACTIVITY_AFTER) / 2;
 		Date dateBetween = new Date(timestampBetweenActivities);
-		List<LocationVO> result = locationHistoryFunStuff.getNearestActivities(dateBetween);
+		List<Location> result = locationHistoryFunStuff.getNearestActivities(dateBetween);
 		assertEquals(2, result.size());
 	}
 

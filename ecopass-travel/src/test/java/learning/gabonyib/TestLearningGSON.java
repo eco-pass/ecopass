@@ -5,10 +5,10 @@ import com.google.gson.reflect.TypeToken;
 import info.ecopass.locationhistory.model.LocationsWrapper;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
+import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+import static info.ecopass.locationhistory.common.TestConstants.PATH_TO_LOCATION_HISTORY;
 import static info.ecopass.locationhistory.common.util.FileIO.streamResource;
 
 
@@ -19,9 +19,9 @@ public class TestLearningGSON {
 
 
     @Test
-    public void testReadingShortJson() throws IOException, URISyntaxException {
+    public void testReadingShortJson() {
         System.out.println("testing json readings");
-        Stream<String> jsonStream = streamResource(LOCATION_HISTORY_JSON);
+        Stream<String> jsonStream = streamResource(Paths.get("", PATH_TO_LOCATION_HISTORY));
         StringBuilder sb = new StringBuilder();
         jsonStream.forEach(line -> appendAsNewLine(sb, (String) line));
         String jsonAsString = sb.toString();

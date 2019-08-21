@@ -1,23 +1,24 @@
 package info.ecopass.locationhistory;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import info.ecopass.locationhistory.model.*;
+import info.ecopass.locationhistory.common.util.LocationHistoryParser;
+import info.ecopass.locationhistory.model.Location;
 import org.junit.*;
 
+import java.nio.file.Paths;
 import java.util.*;
-import java.util.stream.Stream;
-
-import static info.ecopass.locationhistory.common.util.FileIO.streamResource;
 
 
 public class TestLocationHistoryAssumptions {
 
-    private static final String LOCATION_HISTORY_JSON = "5kLineLocationHistory.json";
-    private static final String RESOURCES_FOLDER = "src/test/resources";
+    private static final String[] PATH_TO_LOCATION_HISTORY = {
+            "src",
+            "test",
+            "resources",
+            "5kLineLocationHistory.json"
+    };
 
-    private Gson gson = new Gson();
-    private final List<LocationVO> locations = readFullLocationHistory().getLocations();
+    private final List<Location> locations =
+            LocationHistoryParser.readFullLocationHistory(Paths.get("", PATH_TO_LOCATION_HISTORY));
 
     @Test
     public void gatherLocationHistoryStatistics() {
@@ -25,7 +26,7 @@ public class TestLocationHistoryAssumptions {
 
         locations.forEach(locationVO -> {
             stats.incrementRootEntries();
-            List<LocationVO.InnerActivities> activities = locationVO.getActivity();
+            List<Location.InnerActivities> activities = locationVO.getActivity();
             if (null == activities) {
                 stats.addLevelOneActivityLength(0);
                 stats.addLevelTwoActivityLength(0);
@@ -36,7 +37,7 @@ public class TestLocationHistoryAssumptions {
                     if (null == innerActivity) {
                         stats.addLevelTwoActivityLength(0);
                     } else {
-                        List<LocationVO.DetectedActivityVO> detectedActivities = innerActivity.getActivity();
+                        List<Location.DetectedActivityVO> detectedActivities = innerActivity.getActivity();
                         int activitySize = detectedActivities.size();
                         stats.addLevelTwoActivityLength(activitySize);
                         stats.incrementLevelTwoEntries(activitySize);
@@ -77,19 +78,6 @@ public class TestLocationHistoryAssumptions {
 
     private String getTimeStampErrorMessage(int index, long current, long next) {
         return "Index: " + index + "\n" + "Current: " + current + "\nNext:    " + next;
-    }
-
-    private LocationsWrapper readFullLocationHistory() {
-        StringBuilder sb = new StringBuilder();
-        Stream<String> jsonStream = streamResource(RESOURCES_FOLDER, LOCATION_HISTORY_JSON);
-        jsonStream.forEach(line -> appendAsNewLine(sb,line));
-        String jsonAsString = sb.toString();
-        return gson.fromJson(jsonAsString, new TypeToken<LocationsWrapper>() {}.getType());
-    }
-
-    private static void appendAsNewLine(StringBuilder sb, String line) {
-        sb.append(line);
-        sb.append("\n");
     }
 
 }

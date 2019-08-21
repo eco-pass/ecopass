@@ -4,13 +4,13 @@ import java.util.List;
 
 public class LocationsWrapper {
 
-    private List<LocationVO> locations;
+    private List<Location> locations;
 
-    public List<LocationVO> getLocations() {
+    public List<Location> getLocations() {
         return locations;
     }
 
-    public void setLocations(List<LocationVO> locations) {
+    public void setLocations(List<Location> locations) {
         this.locations = locations;
     }
 }

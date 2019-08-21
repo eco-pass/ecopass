@@ -2,7 +2,7 @@ package info.ecopass.locationhistory.model;
 
 import java.util.List;
 
-public class LocationVO {
+public class Location {
    private long timestampMs;
    private int latitudeE7;
    private int longitudeE7;

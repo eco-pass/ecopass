@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import info.ecopass.locationhistory.model.LocationVO;
+import info.ecopass.locationhistory.model.Location;
 
 public class LocationHistoryNearestProvider {
 
-	public List<LocationVO> getNearestActivities(String date, int activities) {
-		List<LocationVO> nearbyDates = new ArrayList<>();
+	public List<Location> getNearestActivities(String date, int activities) {
+		List<Location> nearbyDates = new ArrayList<>();
 		return nearbyDates;
 	}
 
-	public List<LocationVO> getNearestActivities(Date date) {
-		List<LocationVO> nearbyDates = new ArrayList<>();
+	public List<Location> getNearestActivities(Date date) {
+		List<Location> nearbyDates = new ArrayList<>();
 		return nearbyDates;
 	}
 	
