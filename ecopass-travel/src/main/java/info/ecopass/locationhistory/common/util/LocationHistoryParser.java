@@ -18,7 +18,7 @@ public class LocationHistoryParser {
         Stream<String> jsonStream = streamResource(pathToFile);
         jsonStream.forEach(line -> appendAsNewLine(sb, line));
         String jsonAsString = sb.toString();
-        Object parsed = gson.fromJson(jsonAsString, new TypeToken<LocationsWrapper>() {}.getType());
+        Object parsed = gson.fromJson(jsonAsString, LocationsWrapper.class);
         LocationsWrapper locationsWrapper = ((LocationsWrapper) parsed);
         return locationsWrapper.getLocations();
     }

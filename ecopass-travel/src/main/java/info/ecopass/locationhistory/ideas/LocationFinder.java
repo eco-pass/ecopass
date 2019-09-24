@@ -13,7 +13,7 @@ public class LocationFinder {
     private static final String FROM = "From";
     private static final String TO = "To";
 
-    public static LocationFinder createFrom(List<Location> locations) {
+    public static LocationFinder createFrom(List<Location> locationHistoryEntries) {
         return new LocationFinder();
     }
 

@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import info.ecopass.locationhistory.model.Location;
 
-public class TestLocationHistoryNearestProvider {
+public class TestLocationHistoryEntryHistoryNearestProvider {
 
 	private static final long ACTIVITY_BEFORE = 1539623266024L;
 	private static final long ACTIVITY_AFTER = 1539623245989L;

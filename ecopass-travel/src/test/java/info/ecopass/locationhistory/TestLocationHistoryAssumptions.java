@@ -7,24 +7,20 @@ import org.junit.*;
 import java.nio.file.Paths;
 import java.util.*;
 
+import static info.ecopass.locationhistory.common.TestConstants.PATH_TO_LOCATION_HISTORY;
+
 
 public class TestLocationHistoryAssumptions {
 
-    private static final String[] PATH_TO_LOCATION_HISTORY = {
-            "src",
-            "test",
-            "resources",
-            "5kLineLocationHistory.json"
-    };
 
-    private final List<Location> locations =
+    private final List<Location> locationHistoryEntries =
             LocationHistoryParser.readFullLocationHistory(Paths.get("", PATH_TO_LOCATION_HISTORY));
 
     @Test
     public void gatherLocationHistoryStatistics() {
         LocationHistoryStatistics stats = new LocationHistoryStatistics();
 
-        locations.forEach(locationVO -> {
+        locationHistoryEntries.forEach(locationVO -> {
             stats.incrementRootEntries();
             List<Location.InnerActivities> activities = locationVO.getActivity();
             if (null == activities) {
@@ -52,7 +48,7 @@ public class TestLocationHistoryAssumptions {
     @Test
     public void allRootLocationEntriesHaveDifferentTimeStamps() {
         Set<Long> locationTimestamps = new HashSet<>();
-        locations.forEach(locationVO -> {
+        locationHistoryEntries.forEach(locationVO -> {
             long setSize = locationTimestamps.size();
             locationTimestamps.add(locationVO.getTimestampMs());
             if (locationTimestamps.size() == setSize) {
@@ -63,9 +59,9 @@ public class TestLocationHistoryAssumptions {
 
     @Test
     public void outerLocationEntriesAreOrderedByTimestampDesc() {
-        for (int i = 0; i < locations.size() - 1; i++) {
-            long current = locations.get(i).getTimestampMs();
-            long next = locations.get(i + 1).getTimestampMs();
+        for (int i = 0; i < locationHistoryEntries.size() - 1; i++) {
+            long current = locationHistoryEntries.get(i).getTimestampMs();
+            long next = locationHistoryEntries.get(i + 1).getTimestampMs();
             if (current < next) {
                 throw new RuntimeException(
                         "Timestamp conflicting descending order found\n" + getTimeStampErrorMessage(i, current, next));

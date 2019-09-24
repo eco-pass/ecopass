@@ -17,25 +17,20 @@
 package info.ecopass;
 
 
-import info.ecopass.locationhistory.LocationHistoryMeter;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-// With @WebServlet annotation the webapp/WEB-INF/web.xml is no longer required.
 @WebServlet(name = "HelloAppEngine", value = "/*")
 public class HelloAppEngine extends HttpServlet {
-
-    private LocationHistoryMeter locationHistoryMeter = new LocationHistoryMeter();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
         response.setContentType("text/plain");
-        response.getWriter().println("Hello " + locationHistoryMeter.getSustainable() + " Earth!");
+        response.getWriter().println("Hello Sustainable Earth!");
     }
 
 }
