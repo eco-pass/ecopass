@@ -14,10 +14,10 @@ import static info.ecopass.locationhistory.common.TestConstants.PATH_TO_LOCATION
 public class LocationFinderTest {
 
     // The first and last timestamps in the example 5k location history JSON
-    private static final long FIRST_TIMESTAMP = 1548229582682L;
-    private static final long THIRD_TIMESTAMP = 1548229342688L;
-    private static final long FOURTH_TIMESTAMP = 1548229222589L;
-    private static final long LAST_TIMESTAMP = 1548169767331L;
+    private static final long FIRST_TIMESTAMP = 1548169767331L;
+    private static final long THIRD_TIMESTAMP = 1548169941393L;
+    private static final long FOURTH_TIMESTAMP = 1548169961465L;
+    private static final long LAST_TIMESTAMP = 1548229582682L;
 
     private static final List<Location> locations = Collections.unmodifiableList(getTestLocations());
 
