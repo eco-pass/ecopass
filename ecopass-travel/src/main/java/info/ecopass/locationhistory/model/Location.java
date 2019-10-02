@@ -8,6 +8,7 @@ public class Location {
    private int latitudeE7;
    private int longitudeE7;
    private int accuracy;
+   private int velocity;
    private int altitude;
    private int verticalAccuracy;
 
@@ -102,6 +103,14 @@ public class Location {
 
    public void setAccuracy(int accuracy) {
       this.accuracy = accuracy;
+   }
+
+   public int getVelocity() {
+      return velocity;
+   }
+
+   public void setVelocity(int velocity) {
+      this.velocity = velocity;
    }
 
    public int getAltitude() {
