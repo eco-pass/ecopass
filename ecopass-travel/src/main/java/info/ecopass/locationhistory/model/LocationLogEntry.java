@@ -75,4 +75,10 @@ public class LocationLogEntry {
    public int hashCode() {
       return Objects.hash(timestampMs, latitudeE7, longitudeE7, accuracy, altitude, verticalAccuracy);
    }
+
+   @Override
+   public String toString() {
+      String separator = ", ";
+      return timestampMs + separator + latitudeE7 + separator + longitudeE7 + separator + accuracy + separator + altitude + separator + verticalAccuracy;
+   }
 }

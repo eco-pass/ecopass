@@ -38,7 +38,7 @@ public class SpeedRangeFinderTest {
                 .filter(fromTo(from, to))
                 .collect(Collectors.toList());
 
-        System.out.println(simpleLocations.size());
+        simpleLocations.forEach(System.out::println);
     }
 
 
