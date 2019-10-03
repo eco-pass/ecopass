@@ -30,8 +30,8 @@ public class SpeedRangeFinderTest {
     public void getSimpleMapLocationHistory() {
         List<Location> locations = LocationHistoryParser.readFullLocationHistory(TestConstants.FULL_LOCATION_HISTORY);
 
-        Date from = fromString("2019-07-26__01:00:00.000");
-        Date to = fromString("2019-07-26__02:00:00.000");
+        Date from = fromString("2019-07-26__02:00:00.000");
+        Date to = fromString("2019-07-26__02:39:00.000");
 
         List<LocationLogEntry> simpleLocations = locations.stream()
                 .map(SpeedRangeFinderTest::from)
