@@ -1,20 +1,21 @@
 package info.ecopass.locationhistory;
 
+import info.ecopass.locationhistory.common.TestConstants;
 import info.ecopass.locationhistory.common.util.LocationHistoryParser;
 import info.ecopass.locationhistory.model.Location;
-import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 
-import java.nio.file.Paths;
-import java.util.*;
-
-import static info.ecopass.locationhistory.common.TestConstants.PATH_TO_LOCATION_HISTORY;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 public class TestLocationHistoryAssumptions {
 
 
     private final List<Location> locationHistoryEntries =
-            LocationHistoryParser.readFullLocationHistory(Paths.get("", PATH_TO_LOCATION_HISTORY));
+            LocationHistoryParser.readFullLocationHistory(TestConstants.SHORT_LOCATION_HISTORY);
 
     @Test
     public void gatherLocationHistoryStatistics() {

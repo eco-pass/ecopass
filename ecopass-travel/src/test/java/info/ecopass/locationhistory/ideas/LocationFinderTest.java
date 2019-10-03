@@ -1,14 +1,15 @@
 package info.ecopass.locationhistory.ideas;
 
+import info.ecopass.locationhistory.common.TestConstants;
 import info.ecopass.locationhistory.common.util.LocationHistoryParser;
 import info.ecopass.locationhistory.model.Location;
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-import java.nio.file.*;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static info.ecopass.locationhistory.common.TestConstants.PATH_TO_LOCATION_HISTORY;
 
 public class LocationFinderTest {
 
@@ -52,8 +53,7 @@ public class LocationFinderTest {
     }
 
     private static List<Location> getTestLocations() {
-        Path locationHistoryPath = Paths.get("", PATH_TO_LOCATION_HISTORY);
-       List<Location> locationHistoryEntries = LocationHistoryParser.readFullLocationHistory(locationHistoryPath);
+       List<Location> locationHistoryEntries = LocationHistoryParser.readFullLocationHistory(TestConstants.SHORT_LOCATION_HISTORY);
        return locationHistoryEntries;
     }
 
