@@ -10,6 +10,12 @@ public class GPSE7Coordinate {
     private int longitudeE7;
     private int altitude;
 
+    public GPSE7Coordinate(int latitudeE7, int longitudeE7, int altitude) {
+        this.latitudeE7 = latitudeE7;
+        this.longitudeE7 = longitudeE7;
+        this.altitude = altitude;
+    }
+
     public int getLatitudeE7() {
         return latitudeE7;
     }
