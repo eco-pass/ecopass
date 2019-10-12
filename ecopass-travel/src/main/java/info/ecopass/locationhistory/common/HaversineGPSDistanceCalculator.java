@@ -7,10 +7,10 @@ public class HaversineGPSDistanceCalculator implements GPSDistanceCalculator {
     @Override
     public double calculateMeters(GPSE7Coordinate point1, GPSE7Coordinate point2) {
         double R = 6371e3; // metres
-        int latitudeE71 = point1.getLatitudeE7() / 1000000000;
-        int latitudeE72 = point2.getLatitudeE7() / 1000000000;
-        int longitudeE72 = point2.getLongitudeE7() / 1000000000;
-        int longitudeE71 = point1.getLongitudeE7() / 1000000000;
+        int latitudeE71 = point1.getLatitudeE7() / (10 * 1000 * 1000);
+        int latitudeE72 = point2.getLatitudeE7() / (10 * 1000 * 1000);
+        int longitudeE72 = point2.getLongitudeE7() / (10 * 1000 * 1000);
+        int longitudeE71 = point1.getLongitudeE7() / (10 * 1000 * 1000);
         double latitude1Radiant = Math.toRadians(latitudeE71);
         double latitude2Radiant = Math.toRadians(latitudeE72);
         double latitudeDifference = Math.toRadians(latitudeE72 - latitudeE71);
