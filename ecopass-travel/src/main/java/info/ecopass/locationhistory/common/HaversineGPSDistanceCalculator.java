@@ -22,6 +22,6 @@ public class HaversineGPSDistanceCalculator implements GPSDistanceCalculator {
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
         double d = R * c;
-        return d;
+        return d * 1000;
     }
 }
