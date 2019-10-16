@@ -6,6 +6,9 @@ package info.ecopass.locationhistory.model;
  */
 public class GPSE7Coordinate {
 
+    // The number to divide E7 int represented coordinates to get correct angles
+    private static final int E7 = 10 * 1000 * 1000;
+
     private int latitudeE7;
     private int longitudeE7;
     private int altitude;
@@ -20,12 +23,20 @@ public class GPSE7Coordinate {
         return latitudeE7;
     }
 
+    public double getLatitude(){
+        return (double) latitudeE7 / E7;
+    }
+
     public void setLatitudeE7(int latitudeE7) {
         this.latitudeE7 = latitudeE7;
     }
 
     public int getLongitudeE7() {
         return longitudeE7;
+    }
+
+    public double getLongitude() {
+        return (double) longitudeE7 / E7;
     }
 
     public void setLongitudeE7(int longitudeE7) {
