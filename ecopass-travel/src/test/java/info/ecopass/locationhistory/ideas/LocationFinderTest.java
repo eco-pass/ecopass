@@ -53,8 +53,7 @@ public class LocationFinderTest {
     }
 
     private static List<Location> getTestLocations() {
-       List<Location> locationHistoryEntries = LocationHistoryParser.readFullLocationHistory(TestConstants.SHORT_LOCATION_HISTORY);
-       return locationHistoryEntries;
+        return LocationHistoryParser.readFullLocationHistory(TestConstants.SHORT_LOCATION_HISTORY);
     }
 
 }

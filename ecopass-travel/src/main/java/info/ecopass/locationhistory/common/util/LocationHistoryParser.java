@@ -18,9 +18,8 @@ public class LocationHistoryParser {
         Stream<String> jsonStream = streamResource(pathToFile);
         jsonStream.forEach(line -> appendAsNewLine(sb, line));
         String jsonAsString = sb.toString();
-        Object parsed = gson.fromJson(jsonAsString, LocationsWrapper.class);
-        LocationsWrapper locationsWrapper = ((LocationsWrapper) parsed);
-        return locationsWrapper.getLocations();
+        LocationsWrapper parsed = gson.fromJson(jsonAsString, LocationsWrapper.class);
+        return parsed.getLocations();
     }
 
     private static void appendAsNewLine(StringBuilder sb, String line) {

@@ -2,7 +2,7 @@ package info.ecopass.locationhistory.model;
 
 /**
  * A GPS coordinate representation using integers
- * The decimal coordinate to be represented is obtained by
+ * The decimal coordinate to be represented is obtained by dividing the actual int value by 10e7
  */
 public class GPSE7Coordinate {
 
