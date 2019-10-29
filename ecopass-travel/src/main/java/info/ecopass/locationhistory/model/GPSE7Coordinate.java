@@ -19,11 +19,19 @@ public class GPSE7Coordinate {
         this.altitude = altitude;
     }
 
+    public static GPSE7Coordinate from(Location location) {
+        return new GPSE7Coordinate(location.getLatitudeE7(), location.getLongitudeE7(), location.getAltitude());
+    }
+
+    public static GPSE7Coordinate from(LocationLogEntry location) {
+        return new GPSE7Coordinate(location.getLatitudeE7(), location.getLongitudeE7(), location.getAltitude());
+    }
+
     public int getLatitudeE7() {
         return latitudeE7;
     }
 
-    public double getLatitude(){
+    public double getLatitude() {
         return (double) latitudeE7 / E7;
     }
 

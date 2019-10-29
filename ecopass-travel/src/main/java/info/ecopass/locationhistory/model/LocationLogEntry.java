@@ -1,84 +1,118 @@
 package info.ecopass.locationhistory.model;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
 import java.util.Objects;
 
 public class LocationLogEntry {
-   private long timestampMs;
-   private int latitudeE7;
-   private int longitudeE7;
-   private int accuracy;
-   private int altitude;
-   private int verticalAccuracy;
+    private long timestampMs;
+    private int latitudeE7;
+    private int longitudeE7;
+    private int accuracy;
+    private int altitude;
+    private int verticalAccuracy;
+    private double speedToNext;
 
-   public long getTimestampMs() {
-      return timestampMs;
-   }
+    public static LocationLogEntry from(Location location) {
+        LocationLogEntry locationLogEntry = new LocationLogEntry();
 
-   public void setTimestampMs(long timestampMs) {
-      this.timestampMs = timestampMs;
-   }
+        locationLogEntry.setTimestampMs(location.getTimestampMs());
 
-   public int getLatitudeE7() {
-      return latitudeE7;
-   }
+        locationLogEntry.setLatitudeE7(location.getLatitudeE7());
+        locationLogEntry.setLongitudeE7(location.getLongitudeE7());
+        locationLogEntry.setAccuracy(location.getAccuracy());
 
-   public void setLatitudeE7(int latitudeE7) {
-      this.latitudeE7 = latitudeE7;
-   }
+        locationLogEntry.setAltitude(location.getAltitude());
+        locationLogEntry.setVerticalAccuracy(location.getVerticalAccuracy());
 
-   public int getLongitudeE7() {
-      return longitudeE7;
-   }
+        return locationLogEntry;
+    }
 
-   public void setLongitudeE7(int longitudeE7) {
-      this.longitudeE7 = longitudeE7;
-   }
+    public long getTimestampMs() {
+        return timestampMs;
+    }
 
-   public int getAccuracy() {
-      return accuracy;
-   }
+    public void setTimestampMs(long timestampMs) {
+        this.timestampMs = timestampMs;
+    }
 
-   public void setAccuracy(int accuracy) {
-      this.accuracy = accuracy;
-   }
+    public int getLatitudeE7() {
+        return latitudeE7;
+    }
 
-   public int getAltitude() {
-      return altitude;
-   }
+    public void setLatitudeE7(int latitudeE7) {
+        this.latitudeE7 = latitudeE7;
+    }
 
-   public void setAltitude(int altitude) {
-      this.altitude = altitude;
-   }
+    public int getLongitudeE7() {
+        return longitudeE7;
+    }
 
-   public int getVerticalAccuracy() {
-      return verticalAccuracy;
-   }
+    public void setLongitudeE7(int longitudeE7) {
+        this.longitudeE7 = longitudeE7;
+    }
 
-   public void setVerticalAccuracy(int verticalAccuracy) {
-      this.verticalAccuracy = verticalAccuracy;
-   }
+    public int getAccuracy() {
+        return accuracy;
+    }
 
-   @Override
-   public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-      LocationLogEntry that = (LocationLogEntry) o;
-      return timestampMs == that.timestampMs &&
-            latitudeE7 == that.latitudeE7 &&
-            longitudeE7 == that.longitudeE7 &&
-            accuracy == that.accuracy &&
-            altitude == that.altitude &&
-            verticalAccuracy == that.verticalAccuracy;
-   }
+    public void setAccuracy(int accuracy) {
+        this.accuracy = accuracy;
+    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(timestampMs, latitudeE7, longitudeE7, accuracy, altitude, verticalAccuracy);
-   }
+    public int getAltitude() {
+        return altitude;
+    }
 
-   @Override
-   public String toString() {
-      String separator = ", ";
-      return timestampMs + separator + latitudeE7 + separator + longitudeE7 + separator + accuracy + separator + altitude + separator + verticalAccuracy;
-   }
+    public void setAltitude(int altitude) {
+        this.altitude = altitude;
+    }
+
+    public int getVerticalAccuracy() {
+        return verticalAccuracy;
+    }
+
+    public void setVerticalAccuracy(int verticalAccuracy) {
+        this.verticalAccuracy = verticalAccuracy;
+    }
+
+    public double getSpeedToNext() {
+        return speedToNext;
+    }
+
+    public void setSpeedToNext(double speedToNext) {
+        this.speedToNext = speedToNext;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LocationLogEntry entry = (LocationLogEntry) o;
+        return timestampMs == entry.timestampMs &&
+                latitudeE7 == entry.latitudeE7 &&
+                longitudeE7 == entry.longitudeE7 &&
+                accuracy == entry.accuracy &&
+                altitude == entry.altitude &&
+                verticalAccuracy == entry.verticalAccuracy &&
+                Double.compare(entry.speedToNext, speedToNext) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(timestampMs, latitudeE7, longitudeE7, accuracy, altitude, verticalAccuracy, speedToNext);
+    }
+
+    @Override
+    public String toString() {
+        String separator = ", ";
+        return getReadableDate(timestampMs) + separator + (double)latitudeE7 + separator + longitudeE7 + separator + speedToNext + separator + accuracy + separator + altitude + separator + verticalAccuracy;
+    }
+
+    private String getReadableDate(long dateMillis) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd_HH:mm:ss.SSS");
+        Date toDisplay = Date.from(Instant.ofEpochMilli(dateMillis));
+        return simpleDateFormat.format(toDisplay);
+    }
 }

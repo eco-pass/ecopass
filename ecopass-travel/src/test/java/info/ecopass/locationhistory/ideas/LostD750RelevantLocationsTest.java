@@ -1,9 +1,14 @@
 package info.ecopass.locationhistory.ideas;
 
+import info.ecopass.locationhistory.common.HaversineGPSDistanceCalculator;
+import info.ecopass.locationhistory.common.LocationHaversineSpeedCalculator;
+import info.ecopass.locationhistory.common.LocationSpeedCalculator;
 import info.ecopass.locationhistory.common.TestConstants;
 import info.ecopass.locationhistory.common.util.LocationHistoryParser;
+import info.ecopass.locationhistory.model.GPSE7Coordinate;
 import info.ecopass.locationhistory.model.Location;
 import info.ecopass.locationhistory.model.LocationLogEntry;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.text.ParseException;
@@ -14,6 +19,14 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class LostD750RelevantLocationsTest {
+
+    private static LocationSpeedCalculator locationSpeedCalculator;
+
+    @BeforeClass
+    public static void init() {
+        HaversineGPSDistanceCalculator distanceCalculator = new HaversineGPSDistanceCalculator();
+        locationSpeedCalculator = new LocationHaversineSpeedCalculator(distanceCalculator);
+    }
 
     @Test
     public void getSimpleMapLocationHistory() {
@@ -26,6 +39,13 @@ public class LostD750RelevantLocationsTest {
                 .map(LostD750RelevantLocationsTest::from)
                 .filter(fromTo(from, to))
                 .collect(Collectors.toList());
+
+        for (int i = 0; i < simpleLocations.size() - 1; i++) {
+            LocationLogEntry entry1 = simpleLocations.get(i);
+            LocationLogEntry entry2 = simpleLocations.get(i + 1);
+            double averageSpeedToNextPoint = locationSpeedCalculator.calculateKilometersPerHour(entry1, entry2);
+            entry1.setSpeedToNext(averageSpeedToNextPoint);
+        }
 
         simpleLocations.forEach(System.out::println);
     }
